@@ -53,6 +53,11 @@
                 <div class="form-group col-3">
                     <select class="form-control">
                         <option>-- Status --</option>
+                        <option>NOVO</option>
+                        <option>ENTREGUE</option>
+                        <option>CANCELADO</option>
+                        <option>PENDENTE</option>
+                        <option>ENCAMINHADO</option>
                     </select>
                 </div>
                 
@@ -74,21 +79,15 @@
             <thead>
                 <tr>
                     <th>#Entrega</th>
-                    <th>Data de Cadastro</th>
-                    <th>Status</th>
-                    <th>Data Alteração</th>
-                    <th>Responsavel</th>
+                    <th><a href="?campo=data_cadastro" class="ordenar" ord="asc">Data de Cadastro </a></th>
+                    <th><a href="?campo=status" class="ordenar" ord="desc">Status </a></th>
+                    <th><a href="?campo=data_modificado" class="ordenar">Data Alteração </a></th>
+                    <th><a href="?campo=entregador" class="ordenar">Responsável </a></th>
                 </tr>
             </thead>
 
             <tbody>
-                <tr>
-                    <td>123456</td>
-                    <td>10/11/1901</td>
-                    <td>Entregue</td>
-                    <td>09/08/2009</td>
-                    <td>Murilo</td>
-                </tr>
+
             </tbody>
 
         </table>

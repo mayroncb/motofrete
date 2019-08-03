@@ -9,7 +9,10 @@ $dsn = "mysql:dbname=$banco;host=$server;charset=UTF8";
 
 $con = new PDO($dsn, $usuario, $senha);
 
-$sql = "SELECT * FROM entregas";
+$coluna = ($_GET["campo"] != "") ? $_GET["campo"] : "id";
+
+$sql = "SELECT * FROM entregas
+ORDER BY $coluna DESC";
 
 $res = $con->query($sql);
 
