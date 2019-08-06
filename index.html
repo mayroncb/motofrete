@@ -51,13 +51,13 @@
                 </div>
                 
                 <div class="form-group col-3">
-                    <select class="form-control">
-                        <option>-- Status --</option>
-                        <option>NOVO</option>
-                        <option>ENTREGUE</option>
-                        <option>CANCELADO</option>
-                        <option>PENDENTE</option>
-                        <option>ENCAMINHADO</option>
+                    <select id="sel-status" class="form-control">
+                        <option value="0">-- Status --</option>
+                        <option value="NOVO">NOVO</option>
+                        <option value="ENTREGUE">ENTREGUE</option>
+                        <option value="CANCELADO">CANCELADO</option>
+                        <option value="PENDENTE">PENDENTE</option>
+                        <option value="ENCAMINHADO">ENCAMINHADO</option>
                     </select>
                 </div>
                 
@@ -79,8 +79,8 @@
             <thead>
                 <tr>
                     <th>#Entrega</th>
-                    <th><a href="?campo=data_cadastro" class="ordenar" ord="asc">Data de Cadastro </a></th>
-                    <th><a href="?campo=status" class="ordenar" ord="desc">Status </a></th>
+                    <th><a href="?campo=data_cadastro" class="ordenar">Data de Cadastro </a></th>
+                    <th><a href="?campo=status" class="ordenar">Status </a></th>
                     <th><a href="?campo=data_modificado" class="ordenar">Data Alteração </a></th>
                     <th><a href="?campo=entregador" class="ordenar">Responsável </a></th>
                 </tr>
