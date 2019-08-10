@@ -12,15 +12,87 @@
 
     <!-- Bootstrap core CSS -->
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" rel="stylesheet">
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="node_modules/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+    <script src="node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
 
     <script src="js/listagem.js"></script>
+    <script src="js/cadastro.js"></script>
 
 </head>
+        
+    <div class="modal fade" id="modal-cadastro" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Cadastrar Entrega</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                    <form class="form-horizontal">
+                            <fieldset>
+                                <!-- https://bootsnipp.com/ -->
+                                <!-- Form Name -->
+                
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-12 control-label" for="endereco">Endereço de Entrega</label>
+                                    <div class="col-md-12">
+                                        <input id="endereco" name="endereco" type="text" placeholder="" class="form-control input-md"
+                                            required="">
+                
+                                    </div>
+                                </div>
+                
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-12 control-label" for="cliente">Cliente</label>
+                                    <div class="col-md-12">
+                                        <input id="cliente" name="cliente" type="text" placeholder="" class="form-control input-md"
+                                            required="">
+                
+                                    </div>
+                                </div>
+                
+                                <!-- Select Basic -->
+                                <div class="form-group">
+                                    <label class="col-md-12 control-label" for="entregador">Entregador</label>
+                                    <div class="col-md-12">
+                                        <select id="sel-entregador" name="entregador" class="form-control">
+
+                                        </select>
+                                    </div>
+                                </div>
+                
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-12 control-label" for="valor">Valor cobrado</label>
+                                    <div class="col-md-12">
+                                        <input id="valor" name="valor" type="text" placeholder="" class="form-control input-md text-right"
+                                            required="">
+                
+                                    </div>
+                                </div>
+                
+                            </fieldset>
+                        </form>            
+                    </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="button" id="btn-salvar" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+        </div>
+    </div>
 
 <body>
+
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-static">
         <a class="navbar-brand" href="#">MotoFrete</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -34,7 +106,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cadastro.html">Cadastro</a>
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-cadastro">Cadastro</a>
                 </li>
             </ul>
         </div>
@@ -45,13 +117,11 @@
         <div class="card mt-5 mb-4">
             <div class="card-body form-inline">
                 <div class="form-group col-3">
-                    <select class="form-control">
-                        <option>-- Data de Cadastro --</option>
-                    </select>
+                    <input type="text" class="form-control" id="dt-cadastro" placeholder="Data de Cadastro">
                 </div>
                 
                 <div class="form-group col-3">
-                    <select id="sel-status" class="form-control">
+                    <select id="sel-status" class="form-control" coluna="status">
                         <option value="0">-- Status --</option>
                         <option value="NOVO">NOVO</option>
                         <option value="ENTREGUE">ENTREGUE</option>
@@ -62,14 +132,12 @@
                 </div>
                 
                 <div class="form-group col-3">
-                        <select class="form-control">
-                            <option>-- Data de Alteração --</option>
-                        </select>
+                    <input type="text" class="form-control" id="dt-alteracao" placeholder="Data de Alteração">
                 </div>
 
                 <div class="form-group col-3">
-                        <select class="form-control">
-                            <option>-- Responsavel --</option>
+                    <select id="sel-responsavel" class="form-control" coluna="entregador">
+                        <option val="0">-- Responsável --</option>
                         </select>
                 </div>    
             </div>
@@ -95,5 +163,6 @@
     </main><!-- /.container -->
 
 </body>
+
 
 </html>

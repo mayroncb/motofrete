@@ -31,17 +31,53 @@ $(document).ready(function () {
 
     }) // fim do click
 
-    $("#sel-status").change(function(){
+    $("#sel-status, #sel-responsavel").change(function(){
         var valor = $(this).val();
 
         var filtro = {
-            coluna: "status",
+            coluna: $(this).attr('coluna'),
             valor: valor
         };
 
         carregaListagem(null, null, filtro);
 
     }); // fim do change
+
+        // Carrega os responsaveis
+        $.getJSON("responsavel_listagem.php", function(dados){
+
+            dados.forEach(function(item, idx) {
+
+                var opt = '<option value="'+ item.id +'">'+ item.nome +'</option>';
+
+                $("#sel-responsavel, #sel-entregador").append(opt);
+
+            }); // fim do foreach
+
+        }); //fim do getJson
+
+        // cria o calendario
+        $('#dt-cadastro, #dt-alteracao').datepicker({
+            format: "dd/mm/yyyy",
+            endDate: "today",
+            clearBtn: true,
+            language: "pt-BR"
+        });
+
+        $("#dt-cadastro").change(function(){
+            var data = $(this).val();
+
+            var dt = data.split("/");
+            var nova = dt[2] + "-" + dt[1] + "-" + dt[0];
+
+            var filtro = {
+                coluna: "data_cadastro",
+                valor: nova
+            }; 
+
+            carregaListagem(null, null, filtro);
+
+        });
 
 });// fim do ready
 
@@ -57,15 +93,18 @@ function carregaListagem(coluna, ord, filtro)
         filtro: filtro 
     };
 
-    $.getJSON('/model/entregas_listagem.php' + coluna, json, function (dados) {
+    $.getJSON('entregas_listagem.php' + coluna, json, function (dados) {
 
         $("#listagem-entregas tbody").empty();
 
         dados.forEach(function (item, index) {
 
+            var dtCadastro = new Date(item.data_cadastro);
+            var dtCadastroFormatado = dtCadastro.getDate() + "/" + dtCadastro.getMonth() + '/' + dtCadastro.getFullYear();
+            
             var tr = '<tr>'
                 + '<td>' + item.id + '</td>'
-                + '<td>' + item.data_cadastro + '</td>'
+                + '<td>' + dtCadastroFormatado + '</td>'
                 + '<td>' + item.status + '</td>'
                 + '<td>' + item.data_modificado + '</td>'
                 + '<td>' + item.nome + '</td>'

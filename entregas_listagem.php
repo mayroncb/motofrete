@@ -1,7 +1,7 @@
 <?php
 
 $usuario = "root";
-$senha = "elaborata";
+$senha = "";
 $server = "localhost";
 $banco = "motofrete";
 
@@ -9,8 +9,8 @@ $dsn = "mysql:dbname=$banco;host=$server;charset=UTF8";
 
 $con = new PDO($dsn, $usuario, $senha);
 
-$coluna = ($_GET["campo"] != "") ? $_GET["campo"] : "id";
-$ord = ($_GET["ord"] != "") ? $_GET["ord"] : "ASC";
+$coluna = (isset($_GET["campo"]) && $_GET["campo"] != "") ? $_GET["campo"] : "id";
+$ord = (isset($_GET["ord"]) && $_GET["ord"] != "") ? $_GET["ord"] : "ASC";
 
 $where = "";
 
