@@ -50,7 +50,7 @@ $(document).ready(function () {
 
                 var opt = '<option value="'+ item.id +'">'+ item.nome +'</option>';
 
-                $("#sel-responsavel, #sel-entregador").append(opt);
+                $("#sel-responsavel, #sel-entregador, #sel-alteracao-entregador").append(opt);
 
             }); // fim do foreach
 
@@ -78,6 +78,18 @@ $(document).ready(function () {
             carregaListagem(null, null, filtro);
 
         });
+
+        $("#listagem-entregas").on('click', '.btn-alterar', function(){
+                $('#modal-alterar').modal('show');
+                
+                var id = $(this).attr('entrega');
+                $.getJSON('entregas_exibir.php?id='+id, function(res){
+                    console.log(res);
+                    $('#sel-alteracao-status').val(res.status);
+                    $('#sel-alteracao-entregador').val(res.entregador);
+                });
+
+        }); // fim do on
 
 });// fim do ready
 
@@ -108,6 +120,7 @@ function carregaListagem(coluna, ord, filtro)
                 + '<td>' + item.status + '</td>'
                 + '<td>' + item.data_modificado + '</td>'
                 + '<td>' + item.nome + '</td>'
+                +'<td> <button type="button" class="btn btn-secondary btn-alterar" entrega="'+ item.id +'">Alterar</button> </td>'
                 + '</tr>';
 
             $("#listagem-entregas tbody").append(tr);

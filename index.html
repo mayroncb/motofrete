@@ -24,7 +24,7 @@
     <script src="js/cadastro.js"></script>
 
 </head>
-        
+        <!-- Modal Cadastro -->
     <div class="modal fade" id="modal-cadastro" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -74,15 +74,19 @@
                                 <div class="form-group">
                                     <label class="col-md-12 control-label" for="valor">Valor cobrado</label>
                                     <div class="col-md-12">
-                                        <input id="valor" name="valor" type="text" placeholder="" class="form-control input-md text-right"
+                                        <input id="valor" name="valor" type="text" placeholder="" 
+                                        class="form-control input-md text-right"
                                             required="">
-                
+                                        <div class="invalid-feedback">
+                                            O campo é obrigatorio.
+                                        </div>
                                     </div>
                                 </div>
                 
                             </fieldset>
                         </form>            
                     </div>
+                    
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             <button type="button" id="btn-salvar" class="btn btn-primary">Salvar</button>
@@ -90,6 +94,49 @@
         </div>
         </div>
     </div>
+
+            <!-- Modal Alterar -->
+            <div class="modal fade" id="modal-alterar" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title">Alterar entrega</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+
+                                <div class="form-group">
+                                        <label class="col-md-12 control-label" for="entregador">Entregador</label>
+                                        <div class="col-md-12">
+                                            <select id="sel-alteracao-entregador" name="entregador" class="form-control">
+    
+                                            </select>
+                                        </div>
+                                </div>
+
+                                    <div class="form-group">
+                                            <label class="col-md-12 control-label">Status</label>
+                                            <div class="col-md-12">
+                                                <select id="sel-alteracao-status" class="form-control">
+                                                        <option value="NOVO">NOVO</option>
+                                                        <option value="ENTREGUE">ENTREGUE</option>
+                                                        <option value="CANCELADO">CANCELADO</option>
+                                                        <option value="PENDENTE">PENDENTE</option>
+                                                        <option value="ENCAMINHADO">ENCAMINHADO</option>
+                                                    </select>                                                
+                                            </div>
+                                    </div>                                
+                        </div>
+                                
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">X</button>
+                        <button type="button" id="btn-salvar" class="btn btn-primary">Alterar</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
 
 <body>
 
@@ -113,6 +160,8 @@
     </nav>
 
     <main role="main" class="container">
+
+
 
         <div class="card mt-5 mb-4">
             <div class="card-body form-inline">

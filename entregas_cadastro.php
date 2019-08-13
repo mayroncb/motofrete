@@ -1,7 +1,7 @@
 <?php
 
 $usuario = "root";
-$senha = "";
+$senha = "elaborata";
 $server = "localhost";
 $banco = "motofrete";
 
@@ -32,4 +32,10 @@ $sql = "INSERT INTO `entregas`
             '$valor', 
             '$entregador')";
 
-$con->exec($sql);
+if($con->exec($sql) === false)
+{
+    echo "erro";
+
+}else {
+    echo "ok";
+}
