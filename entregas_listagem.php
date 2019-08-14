@@ -1,7 +1,7 @@
 <?php
 
 $usuario = "root";
-$senha = "elaborata";
+$senha = "";
 $server = "localhost";
 $banco = "motofrete";
 

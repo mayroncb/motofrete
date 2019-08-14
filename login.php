@@ -9,16 +9,19 @@ $dsn = "mysql:dbname=$banco;host=$server;charset=UTF8";
 
 $con = new PDO($dsn, $usuario, $senha);
 
-$id = $_GET["id"];
+$login = $_POST["login"];
+$senha = $_POST["senha"];
 
-$sql = "SELECT * FROM entregas
-        WHERE entregas.id = $id";
+$sql = "SELECT * 
+        FROM usuario 
+        WHERE login='$login' AND senha='$senha'";
 
 $res = $con->query($sql);
 
 $dados = $res->fetchAll(PDO::FETCH_ASSOC);
 
-echo json_encode($dados[0]);
-    
-
-?>
+if (count($dados) > 0) {
+    echo "ok";
+} else {
+    echo "erro";
+}

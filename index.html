@@ -23,6 +23,13 @@
     <script src="js/listagem.js"></script>
     <script src="js/cadastro.js"></script>
 
+    <script>
+        var logado = window.localStorage.getItem("logado");
+        if (logado != "true") {
+            window.location.href = "/motofrete/login.html";
+        }
+    </script>
+
 </head>
         <!-- Modal Cadastro -->
     <div class="modal fade" id="modal-cadastro" tabindex="-1" role="dialog">
@@ -132,7 +139,7 @@
                                 
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">X</button>
-                        <button type="button" id="btn-salvar" class="btn btn-primary">Alterar</button>
+                        <button type="button" id="btn-salvar-alteracao" class="btn btn-primary">Alterar</button>
                         </div>
                     </div>
                     </div>
@@ -183,6 +190,8 @@
                 <div class="form-group col-3">
                     <input type="text" class="form-control" id="dt-alteracao" placeholder="Data de Alteração">
                 </div>
+
+                <input type="hidden" id="id_entrega" /> 
 
                 <div class="form-group col-3">
                     <select id="sel-responsavel" class="form-control" coluna="entregador">

@@ -17,7 +17,7 @@ $(document).ready(function(){
                             +'Ocorreu um problema ao cadastrar!'
                             +'</div>';
 
-            $('.modal-body').prepend(alert);
+            $('#modal-cadastro .modal-body').prepend(alert);
             $('#cliente').addClass('is-invalid');
             
             return false;
@@ -29,7 +29,7 @@ $(document).ready(function(){
                             +'Ocorreu um problema ao cadastrar!'
                             +'</div>';
 
-            $('.modal-body').prepend(alert);
+            $('#modal-cadastro .modal-body').prepend(alert);            
             $('#endereco').addClass('is-invalid');
             
             return false;
@@ -70,11 +70,30 @@ $(document).ready(function(){
                     var alert = '<div class="alert alert-danger mt-5" id="alert-index" role="alert">'
                                 +'Ocorreu um problema ao cadastrar!'
                                 +'</div>';
-                    $('.modal-body').prepend(alert); 
+                                
+                    $('#modal-cadastro .modal-body').prepend(alert); 
                 }
-
             }); // fim do post
 
         }); // fim do click
 
-});
+
+        $("#btn-salvar-alteracao").click(function(){
+
+            var form = {
+                id: $("#id_entrega").val(),
+                status: $("#sel-alteracao-status").val(),
+                entregador: $("#sel-alteracao-entregador").val()
+            };
+    
+            $.post('entregas_alterar.php', form, function(res){
+                if (res == "ok"){
+                    carregaListagem();
+                    $('#modal-alterar').modal('hide');
+                }
+
+            }); //fim do post
+    
+        }); // fim do click
+    
+    }); //fim do ready 

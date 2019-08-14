@@ -83,8 +83,9 @@ $(document).ready(function () {
                 $('#modal-alterar').modal('show');
                 
                 var id = $(this).attr('entrega');
+                $("#id_entrega").val(id);
+
                 $.getJSON('entregas_exibir.php?id='+id, function(res){
-                    console.log(res);
                     $('#sel-alteracao-status').val(res.status);
                     $('#sel-alteracao-entregador').val(res.entregador);
                 });
